@@ -1,0 +1,10 @@
+Set up React to get something to look at
+
+
+
+
+
+
+Write a Python Parser for deconstructing a run log-file. This is then to be extended to
+load multiple files in order to look at things like winrate over x runs.
+
