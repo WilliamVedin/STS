@@ -3,11 +3,14 @@ from pathlib import Path
 #TODO
 #The program writes a lot of empty spaces after finishing when run on the real run-log directory.
 #This is probably caused by one of the many prints used for testing?
+#Sorting wins in a winIndex-list with the index of won runs. This can then be used for calculating winrate, and keeping track of interesting runs. 
+
 
 f = open("output.txt", "a")
 #path = "C:/Program Files (x86)/Steam/steamapps/common/SlayTheSpire/runs/THE_SILENT"
 path = "C:/Users/92wiv/sts/src/data/logs"
 AllRuns = []  
+WinIndex = []
 
 #Variable to determine how many runs to look at
 MaxNumberOfRuns = 10
