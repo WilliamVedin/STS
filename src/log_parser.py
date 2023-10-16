@@ -19,7 +19,7 @@ def read_text_file(file_path):
         AllRuns.append(tmp)
         print(tmp)
         
-        
+#TODO this should probably just loop the directorys to read them in and add to AllRuns    
 #Loops through a directory, and prints out all directorys through read_text_file()
 def loop_directory(): 
   #print("path is --------" + path)
