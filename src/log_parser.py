@@ -1,6 +1,6 @@
 import os, json
 from pathlib import Path
-#TODO
+#TODO Make a function for analysing a single run (first to parse it out, and then adding to WinIndex)
 #The program writes a lot of empty spaces after finishing when run on the real run-log directory.
 #This is probably caused by one of the many prints used for testing?
 #Sorting wins in a winIndex-list with the index of won runs. This can then be used for calculating winrate, and keeping track of interesting runs. 
@@ -18,9 +18,8 @@ MaxNumberOfRuns = 10
 #Prints out the content of a file in the current path-directory.
 def read_text_file(file_path):
   with open(file_path, 'r') as f: 
-        tmp = f.read()
+        tmp = f.read()  #tmp is the JSON-object of a run
         AllRuns.append(tmp)
-        print(tmp)
         
 #TODO this should probably just loop the directorys to read them in and add to AllRuns    
 #Loops through a directory, and prints out all directorys through read_text_file()
@@ -34,7 +33,7 @@ def loop_directory():
       if file.endswith(".run"):
           RunsInDir += 1
           
-  print(RunsInDir)
+  #print(RunsInDir)
   for file in os.listdir(path): 
       
       os.chdir(path)
@@ -49,13 +48,13 @@ def loop_directory():
 #testcase
 loop_directory()
 
-def print_outout():
-  print("before allRuns - ")
-  for x in range(len(AllRuns)):
-      print(AllRuns[x], file=f)
-  print("after allRuns - ")
+#prints out the contents of a list
+def print_out(lst):
+  for x in range(len(lst)):
+      print(lst[x])
 
-print_outout()
+
+print_out(AllRuns)
 
 f.close()
 
