@@ -12,40 +12,35 @@ path = "C:/Users/92wiv/sts/src/data/logs"
 AllRuns = []  
 WinIndex = []
 
-#Variable to determine how many runs to look at
+#Variable to determine how many runs to look at, should be input later
 MaxNumberOfRuns = 10
 
 #Prints out the content of a file in the current path-directory.
 def read_text_file(file_path):
-  with open(file_path, 'r') as f: 
-        tmp = f.read()  #tmp is the JSON-object of a run
-        AllRuns.append(tmp)
-        
+  try:
+      with open(file_path, 'r') as f: 
+            tmp = f.read()  #tmp is the JSON-object of a run
+            AllRuns.append(tmp)
+  except IOerror:
+      print("Error reading file: " + file_path) 
+      
+      
 #TODO this should probably just loop the directorys to read them in and add to AllRuns    
 #Loops through a directory, and prints out all directorys through read_text_file()
 def loop_directory(): 
-  #print("path is --------" + path)
-  #print(os.listdir(path))
-  RunsInDir = 0
-  
-  #Determines number of runs in directory
-  for file in os.listdir(path):
-      if file.endswith(".run"):
-          RunsInDir += 1
-          
-  #print(RunsInDir)
+
   for file in os.listdir(path): 
-      
-      os.chdir(path)
-      # Check whether file is in text format or not 
-      if file.endswith(".run"): 
-          file_path = f"{path}/{file}"
-          
-  
-          # call read text file function 
-          read_text_file(file_path) 
+      if(len(AllRuns) < MaxNumberOfRuns): #Reads in the requested amount of log-files. 
+        os.chdir(path)
         
-#testcase
+        # Check whether file is in text format or not 
+        if file.endswith(".run"): 
+            file_path = f"{path}/{file}"
+            # call read text file function 
+            read_text_file(file_path) 
+      else:  
+          break  
+        
 loop_directory()
 
 #prints out the contents of a list
@@ -55,9 +50,12 @@ def print_out(lst):
 
 
 print_out(AllRuns)
+print("---------------------------------------")
+print("---------------------------------------")
+print("---------------------------------------")
+print(AllRuns[1])
 
 f.close()
-
 
 
 #floor_reached":57
