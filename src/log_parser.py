@@ -50,7 +50,7 @@ def print_out(lst):
 
 
 print_out(AllRuns)
-print("---------------------------------------")
+print("--------------------------------------")
 print(AllRuns[1])
 
 
